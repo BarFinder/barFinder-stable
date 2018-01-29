@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>BarFinder App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script
+			  src="https://code.jquery.com/jquery-1.11.1.min.js"
+			  integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+			  crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="barFinderStyle.css">
+</head>
+
+<body>
+	<div data-role="page">
+
+		<div data-role="header">
+			<h1>Welcome to BarFinder!</h1>
+		</div><!-- /heder -->
+
+		<div role="main" class="ui-content">
+			<div id="map" style="width:100%;height:30em;">There is an issue with Maps</div>
+
+			<script>
+				
+				function myMap() {
+			    let mapCanvas = document.getElementById("map");
+			    let mapOptions = {
+			        center: new google.maps.LatLng(59.33, 18.06),
+			        zoom: 12
+			    };
+			    let map = new google.maps.Map(mapCanvas, mapOptions);
+				} 
+				
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhV4PqPRqoSASvwP4oD1BSa-A-cxSHwzs&callback=myMap"></script>
+		</div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+    	<h4>A project for Developing Mobile Applications course (ID2216)</h4>
+    </div><!-- /footer -->
+
+	</div><!-- /page -->
+</body>
+</html> 
