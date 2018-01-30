@@ -76,12 +76,20 @@
           }
 
 
-          // Add an overlay to the map of current lat/lng
+          // Add an overlay to the map of current lat/lng with a beer icon
           /*
+          let image = {
+          url: "https://avatars0.githubusercontent.com/u/35840202?s=200&v=4",
+          size: new google.maps.Size(160, 160),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(10, 10),
+          scaledSize: new google.maps.Size(30, 30)
+          };
           let marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title: "You are here"
+          position: new google.maps.LatLng(59.33, 18.06),
+          map: map,
+          title: "You are here",
+          icon: image
           });*/
         } 
 
