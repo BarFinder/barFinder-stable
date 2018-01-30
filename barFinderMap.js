@@ -35,7 +35,7 @@
             }
 
             // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-            navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:false, timeout: 6000});
+            navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 300000, enableHighAccuracy:false, timeout: 6000});
 
             
 
