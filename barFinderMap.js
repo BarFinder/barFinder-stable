@@ -4,6 +4,9 @@
          * https://developers.google.com/web/fundamentals/native-hardware/user-location/#ask_permission_responsibly
          * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
          */
+		 
+		 var infowindow;
+		 var service;
 
         function initMap() {
           let mapCanvas = document.getElementById("map");
@@ -16,6 +19,8 @@
           };
 
           let map = new google.maps.Map(mapCanvas, mapOptions);
+		  
+		  infowindow = new google.maps.InfoWindow();
 
           // Create the search box and link it to the UI element.
           let input = document.getElementById('pac-input');
@@ -60,12 +65,25 @@
               };
 
               // Create a marker for each place.
-              markers.push(new google.maps.Marker({
+             /* markers.push(new google.maps.Marker({
                 map: map,
                 icon: image, //icon
                 title: place.name,
                 position: place.geometry.location
-              }));
+              }));*/
+			  
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+		  icon: image,
+		  title: place.name,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent('<h1>'+place.name+'</h1><p>' + place.formatted_address + '</p>');
+          infowindow.open(map, this);
+        });
 
               if (place.geometry.viewport) {
                 // Only geocodes have viewport.
