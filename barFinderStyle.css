@@ -62,3 +62,6 @@ html,body, div[data-role ="page"] {
 #target {
   width: 345px;
 }
+
+#wrapper_map { position: relative; }
+#over_map { position: absolute; top: 90vh; left: 50vw; z-index: 99; }
