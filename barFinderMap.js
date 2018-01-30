@@ -9,7 +9,10 @@
           let mapCanvas = document.getElementById("map");
           let mapOptions = {
               center: new google.maps.LatLng(59.33, 18.06),
-              zoom: 12
+              zoom: 12,
+              streetViewControl: false,
+              mapTypeControl: false,
+              mapTypeControlOptions: { mapTypeIds: [] }
           };
 
           let map = new google.maps.Map(mapCanvas, mapOptions);
