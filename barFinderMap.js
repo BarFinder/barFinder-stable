@@ -14,10 +14,10 @@
 
           let map = new google.maps.Map(mapCanvas, mapOptions);
 
-          var infoWindow = new google.maps.InfoWindow({map: map});
+          
 
           $( "#locationButton" ).click(function( event ) {
-
+            let infoWindow = new google.maps.InfoWindow({map: map});
             // Try HTML5 geolocation
             if ( navigator.geolocation ) {
               function success(position) {
