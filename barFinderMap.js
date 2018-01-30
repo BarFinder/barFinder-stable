@@ -16,40 +16,44 @@
 
           var infoWindow = new google.maps.InfoWindow({map: map});
 
-          // Try HTML5 geolocation
-          if ( navigator.geolocation ) {
-            function success(position) {
-              // Location found, show map with these coordinates
-              let pos = {
-                lat: position.coords.latitude, 
-                lng: position.coords.longitude
-              };
+          $( "#locationButton" ).click(function( event ) {
 
-              infoWindow.setPosition(pos);
-              infoWindow.setContent('Location found.');
-              map.setCenter(pos);
+            // Try HTML5 geolocation
+            if ( navigator.geolocation ) {
+              function success(position) {
+                // Location found, show map with these coordinates
+                let pos = {
+                  lat: position.coords.latitude, 
+                  lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+              }
+
+              function fail(error) {
+                handleLocationError(true, infoWindow, map.getCenter());  // Failed to find location
+              }
+
+              // Find the users current position.  Cache the location for 5 minutes (5*60*1000), timeout after 6 seconds
+              navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 300000, enableHighAccuracy:false, timeout: 6000});
+
+              
+
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter()); 
             }
 
-            function fail(error) {
-              handleLocationError(true, infoWindow, map.getCenter());  // Failed to find location
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                                  'Error: The Geolocation service failed.' :
+                                  'Error: Your browser doesn\'t support geolocation.');
             }
 
-            // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-            navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 300000, enableHighAccuracy:false, timeout: 6000});
-
-            
-
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter()); 
-          }
-
-          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
-          infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
-          }
+          });
 
         // Add an overlay to the map of current lat/lng with a beer icon
         let image = {
