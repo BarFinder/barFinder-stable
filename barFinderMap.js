@@ -72,18 +72,18 @@
                 position: place.geometry.location
               }));*/
 			  
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-          map: map,
-		  icon: image,
-		  title: place.name,
-          position: place.geometry.location
-        });
+			var placeLoc = place.geometry.location;
+			var marker = new google.maps.Marker({
+			  map: map,
+			  //icon: image,
+			  title: place.name,
+			  position: place.geometry.location
+			});
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent('<h1>'+place.name+'</h1><p>' + place.formatted_address + '</p>');
-          infowindow.open(map, this);
-        });
+			google.maps.event.addListener(marker, 'click', function() {
+			  infowindow.setContent('<h1>'+place.name+'</h1><p>' + place.formatted_address + '</p>');
+			  infowindow.open(map, this);
+			});
 
               if (place.geometry.viewport) {
                 // Only geocodes have viewport.
