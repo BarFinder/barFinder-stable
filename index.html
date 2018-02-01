@@ -21,38 +21,25 @@
       <h1>BarFinder</h1>
     </div><!-- /header -->
 
-    <div role="main" class="ui-content">
+    <div id="wrapper_map" role="main" class="ui-content">
       <input id="pac-input" class="controls" type="text" placeholder="Search Box">
       <div id="map">There is an issue with Maps</div>
 
       <script src="barFinderMap.js"></script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhV4PqPRqoSASvwP4oD1BSa-A-cxSHwzs&libraries=places&callback=initMap"></script>
-
+      <div id="over_map">
+        <a id="locationButton" href="#" data-role="button" data-position="fixed" class="ui-btn ui-btn-active ui-state-persist ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
+      </div>
+                                                                                                                                                            
     </div><!-- /content -->
-
-
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-      <div data-role="navbar">
-
-        <ul>
-          <li><a id="locationButton" href="#" data-prefetch="true" data-transition="slide" data-role="button" data-icon="location" data-iconpos="top" data-position="fixed" class="ui-btn-active ui-state-persist"></a></li>
-          <!--  
-		  <li><a href="#" data-role="button" data-icon="none" data-iconpos="top" data-position="fixed" ui-state-persist"></a></li>
-          -->
-		</ul>
-
-      </div><!-- /navbar -->
-    </div> <!--/footer -->
-
   </div><!-- /page -->
 
-<!-- Remove branding from 000WebHost 
+<!-- Remove branding from 000WebHost -->
   <script>
   $(document).ready(function(){ 
     $('body').find('img[src$="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png"]').remove();
   }); 
   </script>
--->
 
 </body>
 </html> 
