@@ -1,9 +1,12 @@
-        /*
+    /*
          * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
          * https://developers.google.com/maps/documentation/javascript/geolocation
          * https://developers.google.com/web/fundamentals/native-hardware/user-location/#ask_permission_responsibly
          * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
          */
+		 
+		 var infowindow;
+		 var service;
 
         function initMap() {
           let mapCanvas = document.getElementById("map");
@@ -16,6 +19,8 @@
           };
 
           let map = new google.maps.Map(mapCanvas, mapOptions);
+		  
+		  infowindow = new google.maps.InfoWindow();
 
           // Create the search box and link it to the UI element.
           let input = document.getElementById('pac-input');
@@ -60,12 +65,25 @@
               };
 
               // Create a marker for each place.
-              markers.push(new google.maps.Marker({
+             /* markers.push(new google.maps.Marker({
                 map: map,
                 icon: image, //icon
                 title: place.name,
                 position: place.geometry.location
-              }));
+              }));*/
+			  
+			var placeLoc = place.geometry.location;
+			var marker = new google.maps.Marker({
+			  map: map,
+			  icon: image,
+			  title: place.name,
+			  position: place.geometry.location
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+			  infowindow.setContent('<h1>'+place.name+'</h1><p>' + place.formatted_address + '</p>');
+			  infowindow.open(map, this);
+			});
 
               if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -123,9 +141,9 @@
         // Add an overlay to the map of current lat/lng with a beer icon
         let image = {
           url: "https://avatars0.githubusercontent.com/u/35840202?s=200&v=4",
-          size: new google.maps.Size(160, 160),
+          //size: new google.maps.Size(160, 160),
           origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(10, 10),
+          anchor: new google.maps.Point(0, 30),
           scaledSize: new google.maps.Size(30, 30)
         };
         let marker = new google.maps.Marker({
